@@ -1,0 +1,13 @@
+button.addButton {
+  border: none;
+  background: transparent;
+  color: green;
+  font-size: 25px;
+}
+
+button.deleteButton {
+  border: none;
+  background: transparent;
+  color: red;
+  font-size: 25px;
+}
