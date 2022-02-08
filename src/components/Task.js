@@ -1,5 +1,10 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
+import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
+import './Task.css';
+
 const style = {
   color: 'red',
 };
@@ -16,8 +21,12 @@ const Task = (props) => {
         <p>
           <strong style={important ? style : null}>{text}</strong> - do{' '}
           <span>{date} </span>
-          <button onClick={changeTaskStatus}>Zostało zrobione</button>
-          <button onClick={deleteTask}>X</button>
+          <button className='addButton' onClick={changeTaskStatus}>
+            <FontAwesomeIcon icon={faCircleCheck} />
+          </button>
+          <button className='deleteButton' onClick={deleteTask}>
+            <FontAwesomeIcon icon={faXmarkCircle} />
+          </button>
         </p>
       </div>
     );
@@ -30,7 +39,9 @@ const Task = (props) => {
           <span style={{ fontSize: 13 }}>
             - potwierdzenie wykonanania {finishTime}{' '}
           </span>
-          <button onClick={deleteTask}>X</button>
+          <button className='deleteButton' onClick={deleteTask}>
+            <FontAwesomeIcon icon={faXmarkCircle} />
+          </button>
         </p>
       </div>
     );
