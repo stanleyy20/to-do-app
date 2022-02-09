@@ -1,13 +1,13 @@
 button.addButton {
   border: none;
   background: transparent;
-  color: green;
+  color: rgb(19, 136, 8);
   font-size: 25px;
 }
 
 button.deleteButton {
   border: none;
   background: transparent;
-  color: red;
+  color: #dc143c;
   font-size: 25px;
 }

@@ -17,18 +17,16 @@ const Task = (props) => {
 
   if (active) {
     return (
-      <div>
-        <p>
-          <strong style={important ? style : null}>{text}</strong> - do{' '}
-          <span>{date} </span>
-          <button className='addButton' onClick={changeTaskStatus}>
-            <FontAwesomeIcon icon={faCircleCheck} />
-          </button>
-          <button className='deleteButton' onClick={deleteTask}>
-            <FontAwesomeIcon icon={faXmarkCircle} />
-          </button>
-        </p>
-      </div>
+      <p>
+        <strong style={important ? style : null}>{text}</strong> - do{' '}
+        <span>{date} </span>
+        <button className='addButton' onClick={changeTaskStatus}>
+          <FontAwesomeIcon icon={faCircleCheck} />
+        </button>
+        <button className='deleteButton' onClick={deleteTask}>
+          <FontAwesomeIcon icon={faXmarkCircle} />
+        </button>
+      </p>
     );
   } else {
     const finishTime = new Date(finishDate).toLocaleString();
