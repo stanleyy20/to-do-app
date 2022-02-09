@@ -42,10 +42,15 @@ const TaskList = (props) => {
     />
   ));
 
+  const tasksListElement =
+    activeTasks.length === 0
+      ? `Lista zadań do zrobienia`
+      : `Lista zadań do zrobienia ${activeTasks.length} `;
+
   return (
     <React.Fragment>
       <div className='active'>
-        {<h1>Lista zadania do zrobienia</h1>}
+        <h1>{tasksListElement}</h1>
         {activeTasks.length > 0 ? (
           activeTasks
         ) : (
