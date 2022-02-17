@@ -3,7 +3,7 @@ import Task from './Task';
 
 const TaskList = (props) => {
   const active = props.tasks.filter((task) => task.active === true);
-  const done = props.tasks.filter((task) => task.active === false);
+  const done = props.doneTasks.filter((task) => task.active === false);
 
   if (done.length >= 2) {
     done.sort((a, b) => {

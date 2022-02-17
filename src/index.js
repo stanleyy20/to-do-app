@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { DatabaseManager } from './helpers/DatabaseMenager.ts';
+
+export const database = new DatabaseManager('todo-list-database', [
+  'todo',
+  'done',
+]);
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
+
   document.getElementById('root')
 );
 
