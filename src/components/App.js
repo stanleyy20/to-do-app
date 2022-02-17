@@ -8,7 +8,6 @@ import { DatabaseManagerEventName } from '../helpers/DatabaseMenager.ts';
 import './App.css';
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
   const [tasks, setTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
 
@@ -16,7 +15,6 @@ const App = () => {
     window.addEventListener(DatabaseManagerEventName, () => {
       database.getAllObjects('todo', (task) => setTasks(task));
       database.getAllObjects('done', (task) => setDoneTasks(task));
-      database.getAllObjects('todo', (task) => setCounter(task.length));
     });
   }, []);
 
@@ -26,7 +24,7 @@ const App = () => {
     database.deleteObject('todo', id);
     database.deleteObject('done', id);
     setTasks(tasksToDelete);
-    setDoneTasks(tasksToDelete);
+    database.getAllObjects('done', (task) => setDoneTasks(task));
   };
 
   const changeTaskStatus = (id) => {
@@ -35,16 +33,16 @@ const App = () => {
       if (task.id === id) {
         task.active = false;
         task.finishDate = new Date().getTime();
+        database.createObject('done', task);
       }
     });
-    setDoneTasks(taskToChangeStatus);
-    database.createObject('done', taskToChangeStatus[0]);
     database.deleteObject('todo', id);
+    database.getAllObjects('done', (task) => setDoneTasks(task));
   };
 
   const addTask = (text, date, important) => {
     const task = {
-      id: counter,
+      id: Date.now(),
       text: text,
       date: date,
       important: important,
@@ -52,7 +50,6 @@ const App = () => {
       finishDate: null,
     };
     database.createObject('todo', task);
-    setCounter(counter + 1);
     setTasks((prev) => [...prev, task]);
     return true;
   };
