@@ -1,6 +1,6 @@
 {
-  "short_name": "To do app",
-  "name": "Create React App Sample",
+  "short_name": "To do App",
+  "name": "To do App",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
