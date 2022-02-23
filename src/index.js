@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { DatabaseManager } from './helpers/DatabaseMenager.ts';
-
-export const database = new DatabaseManager('todo-list-database', [
-  'todo',
-  'done',
-]);
+import StoreProvider from './stores/StoreProvider';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <StoreProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </StoreProvider>,
 
   document.getElementById('root')
 );

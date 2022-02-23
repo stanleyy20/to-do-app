@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(120deg, #90f7ec, #32ccbc);
+  background-color: rgb(140, 146, 172);
   min-height: 100vh;
   color: white;
 }

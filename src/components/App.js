@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import AddTask from './AddTask';
 import TaskList from './TaskList';
-import { database } from '..';
+import { StoreContext } from '../stores/StoreProvider';
 import { DatabaseManagerEventName } from '../helpers/DatabaseMenager.ts';
 
 import './App.css';
 
 const App = () => {
+  const { database } = useContext(StoreContext);
   const [tasks, setTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
 
@@ -16,7 +17,7 @@ const App = () => {
       database.getAllObjects('todo', (task) => setTasks(task));
       database.getAllObjects('done', (task) => setDoneTasks(task));
     });
-  }, []);
+  }, [database]);
 
   const deleteTask = (id) => {
     let tasksToDelete = [...tasks];
@@ -58,12 +59,7 @@ const App = () => {
     <div className='App'>
       <h1>To Do App</h1>
       <AddTask add={addTask} />
-      <TaskList
-        tasks={tasks}
-        doneTasks={doneTasks}
-        delete={deleteTask}
-        change={changeTaskStatus}
-      />
+      <TaskList tasks={tasks} doneTasks={doneTasks} delete={deleteTask} change={changeTaskStatus} />
     </div>
   );
 };
